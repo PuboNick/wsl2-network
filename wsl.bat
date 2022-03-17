@@ -24,8 +24,8 @@ if !errorlevel! equ 0 (
     if !errorlevel! equ 0 (
         echo windows ip has set
     ) else (
-        netsh interface ip add address "vEthernet (WSL)" %win_ip% 255.255.255.
+        netsh interface ip add address "vEthernet (WSL)" %win_ip% 255.255.255.0
         echo windows ip set success
     )
 )
-exit
+pause
