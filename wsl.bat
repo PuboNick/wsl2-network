@@ -1,4 +1,3 @@
-::with out console
 if "%1"=="hide" goto CmdBegin
   start mshta vbscript:createobject("wscript.shell").run("""%~0"" hide",0)(window.close)&&exit
 :CmdBegin
@@ -12,7 +11,7 @@ wsl --shutdown ubuntu
 set wsl_ip=192.168.12.18
 set broadcast=192.168.12.0
 set win_ip=192.168.12.10
-set ports=3000 8080 8888 80 3600
+set ports=3000 8080 8888 8889 80 3306 3001 11373 8001 8002 8081
 
 ::set network
 if !errorlevel! equ 0 (
@@ -34,8 +33,12 @@ if !errorlevel! equ 0 (
 )
 
 ::set portproxy
-(for %%a in (%ports%) do (
-  netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=%%a connectaddress=%wsl_ip% connectport=%%a
+echo start set proxy, %date% >E:\code\bat\_log.txt
+netsh interface portproxy reset
+
+(for %%i in (%ports%) do (
+  echo port %%i >>E:\code\bat\_log.txt
+  netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=%%i connectaddress=%wsl_ip% connectport=%%i
 ))
 
 ::pause
