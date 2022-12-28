@@ -7,8 +7,9 @@ setlocal enabledelayedexpansion
 
 ::config
 set wsl_ip=192.168.12.18
-set broadcast=192.168.12.0
 set win_ip=192.168.12.10
+set broadcast=192.168.12.0
+
 set ports=3000 3001 80 8080 8888 8889 8001 8002 8081 3306 1935 11372 11373 11374 11379
 set log_file=E:\code\bat\_log.txt
 
@@ -43,6 +44,6 @@ netsh interface portproxy reset
   netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=%%i connectaddress=%wsl_ip% connectport=%%i
 ))
 
-netsh interface  portproxy show  v4tov4 >>%log_file%
+netsh interface portproxy show v4tov4 >>%log_file%
 
 ::pause
