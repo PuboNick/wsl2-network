@@ -10,7 +10,7 @@ set wsl_ip=192.168.12.18
 set win_ip=192.168.12.10
 set broadcast=192.168.12.0
 
-set ports=3000 3001 80 8080 8888 8889 8001 8002 8081 3306 1935 11372 11373 11374 11379
+set ports=3000 3001 80 8080 8888 8889 8000 8001 8002 8081 3306 3305 1935 11372 11373 11374 11375 11376 11379 11253
 set log_file=E:\code\bat\_log.txt
 
 echo --%date% %time% >%log_file%
@@ -45,5 +45,7 @@ netsh interface portproxy reset
 ))
 
 netsh interface portproxy show v4tov4 >>%log_file%
+
+wsl --shutdown ubuntu
 
 ::pause
