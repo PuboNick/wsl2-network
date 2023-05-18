@@ -10,8 +10,8 @@ set wsl_ip=192.168.12.18
 set win_ip=192.168.12.10
 set broadcast=192.168.12.0
 
-set ports=3000 3001 80 8080 8888 8889 8000 8001 8002 8081 3306 3305 1935 11372 11373 11374 11375 11376 11379 11253
-set log_file=E:\code\bat\_log.txt
+set ports=3000 3001 80 8080 8888 8889 8000 8001 8002 8081 3306 3305 1935 11372 11373 11374 11375 11376 11379 11253 1420
+set log_file=E:\code\scripts\_log.txt
 
 echo --%date% %time% >%log_file%
 
@@ -31,7 +31,7 @@ if !errorlevel! equ 0 (
   if !errorlevel! equ 0 (
     echo windows ip has set >>%log_file%
   ) else (
-    netsh interface ip add address "vEthernet (WSL)" %win_ip% 255.255.255.0
+    netsh interface ip add address "vEthernet (WSL)" %win_ip% 255.255.255.0 >>%log_file%
     echo windows ip set success >>%log_file%
   )
 )
